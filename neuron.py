@@ -1,16 +1,17 @@
 import math 
 
-class Trainer:
-
-    def train():
-        pass
-
 class Neuron:
 
-    def __init__(self, weight = 0.00, bias = 0.00):
-        self.weight = weight
-        self.bias = bias
+    def __init__(self, input_size):
+        self.weights = [0.0] * input_size
+        self.bias = 0.0
 
 
-    def forward(self,x):
-        return x * self.weight + self.bias
+    def forward(self,inputs):
+        output = self.bias
+
+        for x,w in zip(inputs, self.weights):
+            output += x * w
+        return output
+
+
